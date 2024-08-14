@@ -18,6 +18,7 @@ export default function Home() {
       if (result && result.blogList) {
         if (result.blogList.length > 0) {
           setBlogList(result.blogList);
+          console.log(result);
         } else {
           // Handle empty list case
           setBlogList([]);
@@ -103,6 +104,16 @@ export default function Home() {
                     {blogItem.title}
                   </h2>
                   <p className="text-gray-200 my-1">{blogItem.description}</p>
+                  <p className="text-slate-400 text-end italic font-sans">
+                    {new Date(blogItem.date).toLocaleString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      hour12: true,
+                    })}
+                  </p>
                   <div className="flex justify-center items-center space-x-7 p-4">
                     <button
                       onClick={() => handleEditBlog(blogItem)}
