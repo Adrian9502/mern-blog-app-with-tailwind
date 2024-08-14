@@ -1,5 +1,4 @@
 import { useContext, useEffect } from "react";
-import classes from "./styles.module.css";
 import { GlobalContext } from "../context/GlobalState";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -42,9 +41,9 @@ export default function AddBlog() {
     }
   }, [location]);
   return (
-    <div className={classes.wrapper}>
+    <div>
       <h1>{isEdit ? "Edit a Blog" : "Add a Blog"}</h1>
-      <div className={classes.formWrapper}>
+      <div>
         <input
           type="text"
           name="title"

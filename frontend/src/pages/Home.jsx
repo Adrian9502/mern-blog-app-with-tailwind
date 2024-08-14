@@ -1,6 +1,5 @@
 import { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalState";
-import classes from "./styleshome.module.css";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -73,12 +72,12 @@ export default function Home() {
     fetchListOfBlogs();
   }, []);
   return (
-    <div className={classes.wrapper}>
+    <div>
       <h1>Blog List</h1>
       {pending ? (
         <h1>Loading Blogs...</h1>
       ) : (
-        <div className={classes.blogList}>
+        <div>
           {blogList && blogList.length ? (
             blogList.map((blogItem) => (
               <div key={blogItem._id}>
