@@ -74,7 +74,7 @@ export default function Home() {
     fetchListOfBlogs();
   }, []);
   return (
-    <div className="min-h-[80vh] pt-20 px-4">
+    <div className="min-h-[80vh] pt-10 px-4">
       <h1 className="text-3xl font-bold text-center text-white mb-6">
         Blog List
       </h1>

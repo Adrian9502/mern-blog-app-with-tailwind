@@ -30,7 +30,6 @@ export default function AddBlog() {
   }
 
   useEffect(() => {
-    console.log(location);
     if (location.state) {
       const { getCurrentItem } = location.state;
       setIsEdit(true);
@@ -41,29 +40,60 @@ export default function AddBlog() {
     }
   }, [location]);
   return (
-    <div>
-      <h1>{isEdit ? "Edit a Blog" : "Add a Blog"}</h1>
-      <div>
-        <input
-          type="text"
-          name="title"
-          placeholder="Enter blog title..."
-          id="title"
-          value={formData.title}
-          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-        />
-        <textarea
-          name="description"
-          id="description"
-          placeholder="enter blog description"
-          value={formData.description}
-          onChange={(e) =>
-            setFormData({ ...formData, description: e.target.value })
-          }
-        ></textarea>
-        <button onClick={handleSaveToDatabase}>
-          {isEdit ? "Edit a Blog" : "Add a Blog"}
-        </button>
+    <div className="bg-slate-900 min-h-[90vh] flex items-center justify-center p-6">
+      <div className="w-full max-w-lg bg-white rounded-lg shadow-lg p-8">
+        <h1 className="text-3xl font-bold mb-6 text-gray-800 text-center">
+          {isEdit ? "Edit Blog" : "Add Blog"}
+        </h1>
+        <form className="space-y-4">
+          <div>
+            <label
+              htmlFor="title"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Blog Title
+            </label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Enter blog title"
+              value={formData.title}
+              onChange={(e) =>
+                setFormData({ ...formData, title: e.target.value })
+              }
+              className="mt-1 block w-full px-3 py-2 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="description"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Blog Description
+            </label>
+            <textarea
+              name="description"
+              id="description"
+              placeholder="Enter blog description"
+              value={formData.description}
+              onChange={(e) =>
+                setFormData({ ...formData, description: e.target.value })
+              }
+              className="mt-1 block resize-none w-full px-3 py-2 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm"
+              rows="6"
+            ></textarea>
+          </div>
+          <div className="flex justify-center">
+            <button
+              type="button"
+              onClick={handleSaveToDatabase}
+              className="text-white font-semibold bg-slate-900 transition flex items-center justify-center px-4 py-2 rounded-lg space-x-2 hover:bg-emerald-500 hover:text-black hover:border-transparent"
+            >
+              {isEdit ? "Update Blog" : "Add Blog"}
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
