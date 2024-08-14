@@ -3,6 +3,7 @@ import { GlobalContext } from "../context/GlobalState";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { ThreeDots } from "react-loader-spinner";
 export default function Home() {
   const navigate = useNavigate();
   const { blogList, setBlogList, pending, setPending } =
@@ -72,26 +73,59 @@ export default function Home() {
     fetchListOfBlogs();
   }, []);
   return (
-    <div>
-      <h1>Blog List</h1>
+    <div className="min-h-[80vh] pt-20 px-4">
+      <h1 className="text-3xl font-bold text-center text-white mb-6">
+        Blog List
+      </h1>
       {pending ? (
-        <h1>Loading Blogs...</h1>
+        <div className="min-h-[60vh] flex items-center justify-center">
+          <ThreeDots
+            visible={true}
+            height="80"
+            width="80"
+            color="#10b981"
+            radius="9"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
+        </div>
       ) : (
-        <div>
+        <div className="p-4 grid gap-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {blogList && blogList.length ? (
             blogList.map((blogItem) => (
-              <div key={blogItem._id}>
-                <p>{blogItem.title}</p>
-                <p>{blogItem.description}</p>
-                <FaEdit size={30} onClick={() => handleEditBlog(blogItem)} />
-                <FaTrash
-                  onClick={() => handleDeleteBlog(blogItem._id)}
-                  size={30}
-                />
+              <div
+                className="shadow-2xl rounded-lg border border-gray-200 overflow-auto max-h-[376px]"
+                key={blogItem._id}
+              >
+                <div className="p-4 h-full">
+                  <h2 className="text-2xl py-2 text-white text-center font-semibold">
+                    {blogItem.title}
+                  </h2>
+                  <p className="text-gray-200 my-1">{blogItem.description}</p>
+                  <div className="flex justify-center items-center space-x-7 p-4">
+                    <button
+                      onClick={() => handleEditBlog(blogItem)}
+                      className="text-white transition flex items-center justify-center px-4 py-2 border-2 border-emerald-700 rounded-lg space-x-2 hover:bg-emerald-500 hover:text-gray-900 hover:border-transparent"
+                    >
+                      <FaEdit size={30} />
+                      <span className="font-semibold">Edit</span>
+                    </button>
+                    <button
+                      onClick={() => handleDeleteBlog(blogItem._id)}
+                      className="text-white transition flex items-center justify-center px-4 py-2 border-2 border-emerald-700 rounded-lg space-x-2 hover:bg-emerald-500 hover:text-gray-900 hover:border-transparent"
+                    >
+                      <FaTrash size={30} />
+                      <span className="font-semibold">Delete</span>
+                    </button>
+                  </div>
+                </div>
               </div>
             ))
           ) : (
-            <h3>No blogs added</h3>
+            <div className="min-h-[60vh] flex items-center justify-center text-center text-lg text-slate-100 italic">
+              No blogs added
+            </div>
           )}
         </div>
       )}

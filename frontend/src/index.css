@@ -5,3 +5,27 @@
 * {
   font-family: "Raleway", sans-serif;
 }
+
+html,
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #10b981 #1f2937; /* emerald-500 and bg-gray-900 */
+}
+
+/* For WebKit browsers */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937; /* bg-gray-900 */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #10b981; /* emerald-500 */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #059669; /* darken emerald-500 */
+}
