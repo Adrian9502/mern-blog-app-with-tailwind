@@ -1,5 +1,3 @@
-const mongoose = require("mongoose");
-
 const Blog = require("../model/Blog");
 
 // CREATE
@@ -16,10 +14,13 @@ const addNewBlogs = async (req, res) => {
     return res.status(500).json({ message: "Error creating blog." });
   }
 };
+
 // READ
 const fetchListOfBlogs = async (req, res) => {
+  console.log("Received request for /api/blogs");
   try {
-    const blogList = await Blog.find().limit(50);
+    const blogList = await Blog.find().limit(50); // Limit results to ensure performance
+    console.log("Fetched blogs:", blogList);
     if (blogList.length === 0) {
       return res.status(404).json({ message: "No blogs found." });
     }
@@ -73,5 +74,5 @@ const deleteBlog = async (req, res) => {
   }
 };
 
-// export CRUD functions
+// Export CRUD functions
 module.exports = { fetchListOfBlogs, deleteBlog, updateBlog, addNewBlogs };

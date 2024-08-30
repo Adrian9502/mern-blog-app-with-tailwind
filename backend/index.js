@@ -28,11 +28,7 @@ app.get("/api/hello", (req, res) => {
   res.json("I CANTT FIXX THE BUGGGG");
 });
 
-app.get("/api/blogs", (req, res) => {
-  res.json({ message: "Test successful!", blogRouter });
-});
-app.use("/api/blogs2", blogRouter);
-
+app.use("/api/blogs", blogRouter);
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server Running on port ${PORT}`));
