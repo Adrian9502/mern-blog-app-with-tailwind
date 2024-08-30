@@ -1,24 +1,30 @@
 const express = require("express");
 const cors = require("cors");
+
+// Initialize express app
 const app = express();
 
 // Import blog router
+const blogRouter = require("./route/blog-route");
 
-app.options("*", cors());
-app.use(express.json());
+// Database connection
+require("./db/db");
 
+// CORS configuration
 const corsOptions = {
-  origin: "https://mern-blog-app-with-tailwind.vercel.app", // Correct origin without the path
+  origin:
+    "https://mern-blog-app-with-tailwind-git-main-adrian9502s-projects.vercel.app", // Update this with the correct frontend origin
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 };
 
+// Apply CORS middleware
 app.use(cors(corsOptions));
 
-const blogRouter = require("./route/blog-route");
-
-require("./db/db");
-
+// Other middleware
+app.use(express.json());
+app.options("*", cors(corsOptions));
+// Routes
 app.get("/", (req, res) => {
   res.json("Hello");
 });
