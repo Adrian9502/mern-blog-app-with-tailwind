@@ -12,10 +12,10 @@ export default function AddBlog() {
   async function handleSaveToDatabase() {
     const response = isEdit
       ? await axios.put(
-          `http://localhost:5000/api/blogs/update/${location.state.getCurrentItem._id}`,
+          `https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs/update/${location.state.getCurrentItem._id}`,
           { title: formData.title, description: formData.description }
         )
-      : await axios.post("http://localhost:5000/api/blogs/add", {
+      : await axios.post("https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs/add", {
           title: formData.title,
           description: formData.description,
         });
