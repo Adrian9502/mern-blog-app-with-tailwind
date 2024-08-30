@@ -31,7 +31,7 @@ app.get("/api/hello", (req, res) => {
 app.get("/api/blogs", (req, res) => {
   res.json({ message: "Test successful!", blogRouter });
 });
-app.use("/api/blogs", blogRouter);
+app.use("/api/blogs2", blogRouter);
 
 // Start server
 const PORT = process.env.PORT || 5000;
