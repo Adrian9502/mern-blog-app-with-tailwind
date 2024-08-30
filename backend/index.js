@@ -18,11 +18,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use((req, res, next) => {
-  res.setHeader("Permissions-Policy", "fullscreen=(self), geolocation=(self)");
-  next();
-});
-
 app.get("/", (req, res) => {
   res.json("Hello");
 });
