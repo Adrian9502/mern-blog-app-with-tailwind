@@ -7,8 +7,7 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-  origin:
-    "https://mern-blog-app-with-tailwind-git-main-adrian9502s-projects.vercel.app", // Update with the correct frontend origin
+  origin: "*", // Update with the correct frontend origin
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 };
