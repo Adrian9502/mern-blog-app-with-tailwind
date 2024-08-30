@@ -8,10 +8,7 @@ const {
   deleteBlog,
 } = require("../controller/blog-controller");
 
-// get = display
-// post = add new
-// update = put
-// delete = delete
+// Define routes
 blogRouter.get("/", fetchListOfBlogs);
 blogRouter.post("/add", addNewBlogs);
 blogRouter.put("/update/:id", updateBlog);

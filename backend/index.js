@@ -28,6 +28,9 @@ app.get("/api/hello", (req, res) => {
   res.json("I CANTT FIXX THE BUGGGG");
 });
 
+app.get("/api/blogs", (req, res) => {
+  res.json({ message: "Test successful!", blogRouter });
+});
 app.use("/api/blogs", blogRouter);
 
 // Start server

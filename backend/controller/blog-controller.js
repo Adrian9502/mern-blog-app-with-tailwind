@@ -18,17 +18,14 @@ const addNewBlogs = async (req, res) => {
 };
 // READ
 const fetchListOfBlogs = async (req, res) => {
-  console.log("Starting fetchListOfBlogs at", new Date());
   try {
-    console.log("Fetching blogs from the database...");
-    const blogList = await Blog.find().limit(50); // Limit results for faster response
-    console.log("Fetched blogs at", new Date(), "Count:", blogList.length);
+    const blogList = await Blog.find().limit(50);
     if (blogList.length === 0) {
       return res.status(404).json({ message: "No blogs found." });
     }
     return res.status(200).json({ blogList });
   } catch (e) {
-    console.error("fetchListOfBlogs Error at", new Date(), e);
+    console.error("fetchListOfBlogs Error:", e);
     return res.status(500).json({ message: "Error fetching blogs." });
   }
 };
