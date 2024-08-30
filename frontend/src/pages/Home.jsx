@@ -12,7 +12,7 @@ export default function Home() {
   async function fetchListOfBlogs() {
     setPending(true);
     try {
-      const response = await axios.get("http://localhost:5000/api/blogs");
+      const response = await axios.get("https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs");
       const result = response.data;
 
       if (result && result.blogList) {
@@ -61,7 +61,7 @@ export default function Home() {
     const response = await axios.delete(
       // this is from here blogRouter.delete("/delete/:id", deleteBlog);
 
-      `http://localhost:5000/api/blogs/delete/${getCurrentId}`
+      `https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs/delete/${getCurrentId}`
     );
     const result = await response.data;
     if (result?.message) {
