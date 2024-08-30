@@ -14,8 +14,12 @@ export default function Home() {
     setPending(true);
     try {
       const response = await axios.get(
-        "https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs"
+        "https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs",
+        {
+          withCredentials: true,
+        }
       );
+
       const result = response.data;
 
       if (result && result.blogList) {

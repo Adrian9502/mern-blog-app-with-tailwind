@@ -8,15 +8,20 @@ require("./db/db");
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://mern-blog-app-with-tailwind.vercel.app", // Allow only your frontend domain
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allow methods you use
-    credentials: true, // If you're sending cookies or authorization headers
-  })
-);
 app.options("*", cors());
 app.use(express.json());
+
+const corsOptions = {
+  origin: "https://mern-blog-app-with-tailwind.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+};
+
+app.use(cors(corsOptions));
+app.use((req, res, next) => {
+  res.setHeader("Permissions-Policy", "fullscreen=(self), geolocation=(self)");
+  next();
+});
 
 app.get("/", (req, res) => {
   res.json("Hello");
