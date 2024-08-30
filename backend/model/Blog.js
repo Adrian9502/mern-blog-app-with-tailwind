@@ -14,5 +14,6 @@ const blogSchema = new Schema({
     default: Date.now,
   },
 });
+blogSchema.index({ title: 1 });
 
 module.exports = mongoose.model("Blog", blogSchema);

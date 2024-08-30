@@ -20,7 +20,8 @@ const addNewBlogs = async (req, res) => {
 const fetchListOfBlogs = async (req, res) => {
   console.log("Starting fetchListOfBlogs at", new Date());
   try {
-    const blogList = await Blog.find();
+    console.log("Fetching blogs from the database...");
+    const blogList = await Blog.find().limit(50); // Limit results for faster response
     console.log("Fetched blogs at", new Date(), "Count:", blogList.length);
     if (blogList.length === 0) {
       return res.status(404).json({ message: "No blogs found." });

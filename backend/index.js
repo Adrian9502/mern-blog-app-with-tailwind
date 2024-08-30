@@ -24,6 +24,10 @@ app.get("/", (req, res) => {
   res.json("Hello");
 });
 
+app.get("/api/hello", (req, res) => {
+  res.json("I CANTT FIXX THE BUGGGG");
+});
+
 app.use("/api/blogs", blogRouter);
 
 // Start server
