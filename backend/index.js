@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const app = express();
 
 // Import blog router
 
@@ -17,8 +18,6 @@ app.use(cors(corsOptions));
 const blogRouter = require("./route/blog-route");
 
 require("./db/db");
-
-const app = express();
 
 app.get("/", (req, res) => {
   res.json("Hello");
