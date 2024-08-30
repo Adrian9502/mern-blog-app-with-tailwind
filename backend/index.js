@@ -15,7 +15,7 @@ app.use(
     credentials: true, // If you're sending cookies or authorization headers
   })
 );
-
+app.options("*", cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
