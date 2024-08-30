@@ -12,7 +12,7 @@ app.options("*", cors());
 app.use(express.json());
 
 const corsOptions = {
-  origin: "https://mern-blog-app-with-tailwind.vercel.app",
+  origin: "https://mern-blog-app-with-tailwind.vercel.app/api/blogs",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 };

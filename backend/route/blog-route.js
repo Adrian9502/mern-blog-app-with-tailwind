@@ -12,7 +12,7 @@ const {
 // post = add new
 // update = put
 // delete = delete
-blogRouter.get("/api/blogs", fetchListOfBlogs);
+blogRouter.get("/", fetchListOfBlogs);
 blogRouter.post("/add", addNewBlogs);
 blogRouter.put("/update/:id", updateBlog);
 blogRouter.delete("/delete/:id", deleteBlog);
