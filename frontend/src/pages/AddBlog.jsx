@@ -3,6 +3,7 @@ import { GlobalContext } from "../context/GlobalState";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 export default function AddBlog() {
+  axios.defaults.withCredentials = true;
   const { formData, setFormData, setIsEdit, isEdit } =
     useContext(GlobalContext);
   const navigate = useNavigate();
@@ -15,10 +16,13 @@ export default function AddBlog() {
           `https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs/update/${location.state.getCurrentItem._id}`,
           { title: formData.title, description: formData.description }
         )
-      : await axios.post("https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs/add", {
-          title: formData.title,
-          description: formData.description,
-        });
+      : await axios.post(
+          "https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs/add",
+          {
+            title: formData.title,
+            description: formData.description,
+          }
+        );
 
     const result = await response.data;
 

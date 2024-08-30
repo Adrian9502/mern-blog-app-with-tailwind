@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 export default function Home() {
+  axios.defaults.withCredentials = true;
   const navigate = useNavigate();
   const { blogList, setBlogList, pending, setPending } =
     useContext(GlobalContext);
@@ -12,7 +13,9 @@ export default function Home() {
   async function fetchListOfBlogs() {
     setPending(true);
     try {
-      const response = await axios.get("https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs");
+      const response = await axios.get(
+        "https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs"
+      );
       const result = response.data;
 
       if (result && result.blogList) {
