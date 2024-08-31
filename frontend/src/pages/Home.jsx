@@ -13,10 +13,12 @@ export default function Home() {
   async function fetchListOfBlogs() {
     setPending(true);
     try {
-      // CHANGE THIS TO SERVER API
-      const response = await axios.get("http://localhost:5000/api/blogs", {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        "https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs",
+        {
+          withCredentials: true,
+        }
+      );
 
       const result = response.data;
 
@@ -65,9 +67,7 @@ export default function Home() {
     */
     const response = await axios.delete(
       // this is from here blogRouter.delete("/delete/:id", deleteBlog);
-
-      // CHANGE THIS TO SERVER API !!!!
-      `http://localhost:5000/api/blogs/delete/${getCurrentId}`
+      `https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs/delete/${getCurrentId}`
     );
     const result = await response.data;
     if (result?.message) {

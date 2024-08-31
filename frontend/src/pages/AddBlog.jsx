@@ -14,13 +14,16 @@ export default function AddBlog() {
     const response = isEdit
       ? await axios.put(
           // CHANGE THIS TO SERVER API !!!!
-          `http://localhost:5000/${location.state.getCurrentItem._id}`,
+          `https://mern-blog-app-with-tailwind-api.vercel.app/${location.state.getCurrentItem._id}`,
           { title: formData.title, description: formData.description }
         )
-      : await axios.post("http://localhost:5000/api/blogs/add", {
-          title: formData.title,
-          description: formData.description,
-        });
+      : await axios.post(
+          "https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs/add",
+          {
+            title: formData.title,
+            description: formData.description,
+          }
+        );
 
     const result = await response.data;
 

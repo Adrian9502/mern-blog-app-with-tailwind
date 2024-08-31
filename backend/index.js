@@ -8,7 +8,7 @@ const app = express();
 // CORS configuration
 const corsOptions = {
   // SET ORIGIN TO FRONT END LANDING PAGE
-  origin: "http://localhost:5173",
+  origin: "https://mern-blog-app-with-tailwind-frontend.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
