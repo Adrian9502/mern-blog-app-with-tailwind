@@ -6,9 +6,26 @@ require("./db/db");
 const app = express();
 
 // CORS configuration
+// const corsOptions = {
+//   // SET ORIGIN TO FRONT END LANDING PAGE
+//   origin: "https://mern-blog-app-with-tailwind-frontend.vercel.app",
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   credentials: true,
+// };
+
+const allowedOrigins = [
+  "https://mern-blog-app-with-tailwind-frontend.vercel.app",
+  "http://localhost:5173",
+];
+
 const corsOptions = {
-  // SET ORIGIN TO FRONT END LANDING PAGE
-  origin: "https://mern-blog-app-with-tailwind-frontend.vercel.app",
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
