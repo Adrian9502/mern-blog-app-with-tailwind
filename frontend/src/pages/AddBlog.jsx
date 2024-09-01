@@ -10,11 +10,34 @@ export default function AddBlog() {
   const location = useLocation();
 
   // handle saving to database
+  // async function handleSaveToDatabase() {
+  //   const response = isEdit
+  //     ? await axios.put(
+  //         // CHANGE THIS TO SERVER API !!!!
+  //         `https://mern-blog-app-with-tailwind-api.vercel.app/${location.state.getCurrentItem._id}`,
+  //         { title: formData.title, description: formData.description }
+  //       )
+  //     : await axios.post(
+  //         "https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs/add",
+  //         {
+  //           title: formData.title,
+  //           description: formData.description,
+  //         }
+  //       );
+
+  //   const result = await response.data;
+
+  //   if (result) {
+  //     setIsEdit(false);
+  //     setFormData({ title: "", description: "" });
+  //     navigate("/");
+  //   }
+  // }
   async function handleSaveToDatabase() {
     const response = isEdit
       ? await axios.put(
-          // CHANGE THIS TO SERVER API !!!!
-          `https://mern-blog-app-with-tailwind-api.vercel.app/${location.state.getCurrentItem._id}`,
+          // Correct URL with the update path
+          `https://mern-blog-app-with-tailwind-api.vercel.app/api/blogs/update/${location.state.getCurrentItem._id}`,
           { title: formData.title, description: formData.description }
         )
       : await axios.post(
